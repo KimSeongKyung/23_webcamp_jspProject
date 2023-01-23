@@ -1,16 +1,51 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kimseongkyeong
-  Date: 2023/01/11
-  Time: 9:28 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>View Users</title>
+</head>
+
+<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@page import="com.javatpoint.dao.UserDao, com.javatpoint.bean.*, java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<h1>User List</h1>
+
+<%
+    UserDao userDao = new UserDao();
+    List<User> list = userDao.getUserList();
+    request.setCharacterEncoding("UTF-8");
+    request.setAttribute("list", list);
+%>
+
+<table border="1" width="90%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Sex</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <c:forEach items="${list}" var="u">
+        <tr>
+            <td>${u.getId()}</td>
+            <td>${u.getName()}</td>
+            <td>${u.getPassword()}</td>
+            <td>${u.getEmail()}</td>
+            <td>${u.getSex()}</td>
+            <td>${u.getCountry()}</td>
+            <td><a href="editform.jsp?id=${u.getId()}">Edit</a></td>
+            <td><a href="deleteuser.jsp?id=${u.getId()}">Delete</a></td>
+        </tr>
+    </c:forEach>
+</table>
+
+<br/><a href="adduserform.jsp">Add New User</a>
+
+</body>

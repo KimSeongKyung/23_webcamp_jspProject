@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+    <title>JSP 실습</title>
+    <meta charset="UTF-8">
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<h1>JSP 실습하기</h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="adduserform.jsp">Add User</a>
+<a href="viewusers.jsp">View Users</a>
 </body>
 </html>

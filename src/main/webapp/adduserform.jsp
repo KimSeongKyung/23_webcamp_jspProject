@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kimseongkyeong
-  Date: 2023/01/11
-  Time: 9:28 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Add User Form</title>
+</head>
+<body>
+<jsp:include page="userform.html"></jsp:include>
+</body>
 </html>

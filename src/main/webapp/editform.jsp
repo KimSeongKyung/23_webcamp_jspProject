@@ -1,16 +1,68 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kimseongkyeong
-  Date: 2023/01/11
-  Time: 10:02 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Edit Form</title>
+</head>
+
+<body>
+<%@page import="com.javatpoint.dao.UserDao, com.javatpoint.bean.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
+<h1>Edit Form</h1>
+
+<%
+    UserDao userDao = new UserDao();
+    request.setCharacterEncoding("UTF-8");
+    String id = request.getParameter("id");
+    User u = userDao.getUser(Integer.parseInt(id));
+%>
+
+<form action="edituser.jsp" method="post">
+    <input type="hidden" name="id" value="<%=u.getId()%>"/>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" value="<%=u.getName()%>"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" value="<%=u.getPassword()%>"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" name="email" value="<%=u.getEmail()%>"/></td>
+        </tr>
+        <tr>
+            <td>Sex:</td>
+            <td>
+                <input type="radio" name="sex" value="male"/>Male
+                <input type="radio" name="sex" value="female"/>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>
+                <select name="country" style="width: 155px">
+                    <option>India</option>
+                    <option>Pakistan</option>
+                    <option>Afghanistan</option>
+                    <option>Berma</option>
+                    <option>Other</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Edit User"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+<br/><a href="adduserform.jsp">Add New User</a>
+
+</body>

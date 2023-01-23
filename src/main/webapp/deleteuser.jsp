@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kimseongkyeong
-  Date: 2023/01/11
-  Time: 10:02 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<%@page import="com.javatpoint.dao.UserDao"%>
+<jsp:useBean id="u" class="com.javatpoint.bean.User"></jsp:useBean>
+<jsp:setProperty property="*" name="u"></jsp:setProperty>
+
+<%
+    UserDao userDao = new UserDao();
+    userDao.delete(u);
+    response.sendRedirect("viewusers.jsp");
+%>
